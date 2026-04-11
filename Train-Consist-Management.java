@@ -1,32 +1,43 @@
 import java.util.*;
 
 /**
- * MAIN CLASS - UseCase1TrainConsistMgmt
+ * MAIN CLASS - UseCase2TrainConsistMgmt
  *
- * Use Case 1: Initialize Train and Display Consist Summary
+ * UC2: Add Passenger Bogies to Train
  */
-public class UseCase1TrainConsistMgmt {
+public class UseCase2TrainConsistMgmt {
 
     public static void main(String[] args) {
 
-        // Display welcome banner
         System.out.println("======================================");
-        System.out.println("=== Train Consist Management App ===");
+        System.out.println("UC2 - Add Passenger Bogies to Train");
         System.out.println("======================================\n");
 
-        // Create a dynamic list to store train bogies
-        List<String> trainConsist = new ArrayList<>();
+        // Create dynamic list
+        List<String> passengerBogies = new ArrayList<>();
 
-        // Display initialization message
-        System.out.println("Train initialized successfully...");
+        // Add bogies
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
 
-        // Display initial bogie count
-        System.out.println("Initial Bogie Count : " + trainConsist.size());
+        System.out.println("After Adding Bogies:");
+        System.out.println("Passenger Bogies : " + passengerBogies + "\n");
 
-        // Display current train consist
-        System.out.println("Current Train Consist : " + trainConsist);
+        // Remove "AC Chair"
+        passengerBogies.remove("AC Chair");
 
-        // Final system message
-        System.out.println("\nSystem ready for operations...");
+        System.out.println("After Removing 'AC Chair':");
+        System.out.println("Passenger Bogies : " + passengerBogies + "\n");
+
+        // Check if "Sleeper" exists
+        System.out.println("Checking if 'Sleeper' exists:");
+        System.out.println("Contains Sleeper? : " + passengerBogies.contains("Sleeper") + "\n");
+
+        // Final consist
+        System.out.println("Final Train Passenger Consist:");
+        System.out.println(passengerBogies + "\n");
+
+        System.out.println("UC2 operations completed successfully...");
     }
 }
