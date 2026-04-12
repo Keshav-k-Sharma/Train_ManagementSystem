@@ -1,38 +1,45 @@
 import java.util.*;
 
 /**
- * MAIN CLASS - UseCase3TrainConsistMgmt
+ * MAIN CLASS - UseCase4TrainConsistMgmt
  *
- * UC3: Track Unique Bogie IDs
+ * UC4: Maintain Ordered Bogie Consist
  */
-public class UseCase3TrainConsistMgmt {
+public class UseCase4TrainConsistMgmt {
 
     public static void main(String[] args) {
 
         System.out.println("======================================");
-        System.out.println("UC3 - Track Unique Bogie IDs");
+        System.out.println("UC4 - Maintain Ordered Bogie Consist");
         System.out.println("======================================\n");
 
-        // Create a Set to store unique bogie IDs
-        Set<String> bogies = new HashSet<>();
+        // Create LinkedList
+        List<String> trainConsist = new LinkedList<>();
 
-        // Add IDs (including duplicates)
-        bogies.add("BG101");
-        bogies.add("BG102");
-        bogies.add("BG103");
-        bogies.add("BG104");
+        // Add bogies
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // Duplicate entries (ignored automatically)
-        bogies.add("BG101");
-        bogies.add("BG102");
+        // Display initial consist
+        System.out.println("Initial Train Consist:");
+        System.out.println(trainConsist + "\n");
 
-        // Display result
-        System.out.println("Bogie IDs After Insertion:");
-        System.out.println(bogies + "\n");
+        // Insert Pantry Car at position 2
+        trainConsist.add(2, "Pantry Car");
 
-        System.out.println("Note:");
-        System.out.println("Duplicates are automatically ignored by HashSet.\n");
+        System.out.println("After Inserting 'Pantry Car' at position 2:");
+        System.out.println(trainConsist + "\n");
 
-        System.out.println("UC3 uniqueness validation completed...");
+        // Remove first and last bogie
+        trainConsist.remove(0); // remove Engine
+        trainConsist.remove(trainConsist.size() - 1); // remove Guard
+
+        System.out.println("After Removing First and Last Bogie:");
+        System.out.println(trainConsist + "\n");
+
+        System.out.println("UC4 ordered consist operations completed...");
     }
 }
