@@ -1,45 +1,46 @@
 /**
- * MAIN CLASS - UseCase18TrainConsistMgmt
+ * MAIN CLASS - UseCase16TrainConsistMgmt
  *
- * UC18: Linear Search for Bogie ID
+ * UC16: Sort Passenger Bogies by Capacity (Bubble Sort)
  */
-public class UseCase18TrainConsistMgmt {
+public class UseCase16TrainConsistMgmt {
 
     public static void main(String[] args) {
 
         System.out.println("======================================");
-        System.out.println(" UC18 - Linear Search for Bogie ID ");
+        System.out.println(" UC16 - Manual Sorting using Bubble Sort ");
         System.out.println("======================================\n");
 
-        // Create array of bogie IDs
-        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
+        // Create array of passenger bogie capacities
+        int[] capacities = {72, 56, 24, 70, 60};
 
-        // Bogie ID to search
-        String searchId = "BG309";
-
-        // Display all bogies
-        System.out.println("Available Bogie IDs:");
-        for (String id : bogieIds) {
-            System.out.println(id);
+        // Display original order
+        System.out.println("Original Capacities:");
+        for (int c : capacities) {
+            System.out.print(c + " ");
         }
 
-        // ----- LINEAR SEARCH LOGIC -----
-        boolean found = false;
+        // -------- BUBBLE SORT LOGIC --------
+        for (int i = 0; i < capacities.length - 1; i++) {
 
-        for (String id : bogieIds) {
-            if (id.equals(searchId)) {
-                found = true;
-                break; // stop early once found
+            for (int j = 0; j < capacities.length - i - 1; j++) {
+
+                if (capacities[j] > capacities[j + 1]) {
+
+                    // Swap
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
             }
         }
 
-        // Display result
-        if (found) {
-            System.out.println("\nBogie " + searchId + " found in train consist.");
-        } else {
-            System.out.println("\nBogie " + searchId + " NOT found in train consist.");
+        // Display sorted result
+        System.out.println("\n\nSorted Capacities (Ascending):");
+        for (int c : capacities) {
+            System.out.print(c + " ");
         }
 
-        System.out.println("\nUC18 search completed...");
+        System.out.println("\n\nUC16 sorting completed...");
     }
 }
