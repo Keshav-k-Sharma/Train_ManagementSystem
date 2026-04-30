@@ -1,34 +1,48 @@
 import java.util.Arrays;
 
 /**
- * MAIN CLASS - UseCase17TrainConsistMgmt
+ * MAIN CLASS - UseCase16TrainConsistMgmt
  *
- * UC17: Sort Bogie Names Using Arrays.sort()
+ * UC16: Sort Passenger Bogies by Capacity (Bubble Sort)
  */
-public class UseCase17TrainConsistMgmt {
+public class UseCase16TrainConsistMgmt {
 
     public static void main(String[] args) {
 
         System.out.println("======================================");
-        System.out.println(" UC17 - Sort Bogie Names Using Arrays.sort() ");
+        System.out.println(" UC16 - Manual Sorting using Bubble Sort ");
         System.out.println("======================================\n");
 
-        // Create array of bogie names
-        String[] bogieNames = {
-            "Sleeper", "AC Chair", "First Class", "General", "Luxury"
-        };
+        // Create array of passenger bogie capacities
+        int[] capacities = {72, 56, 24, 70, 60};
 
-        // Display original array
-        System.out.println("Original Bogie Names:");
-        System.out.println(Arrays.toString(bogieNames));
+        // Display original order
+        System.out.println("Original Capacities:");
+        for (int c : capacities) {
+            System.out.print(c + " ");
+        }
 
-        // ---- SORT USING BUILT-IN METHOD ----
-        Arrays.sort(bogieNames);
+        // -------- BUBBLE SORT LOGIC --------
+        for (int i = 0; i < capacities.length - 1; i++) {
 
-        // Display sorted array
-        System.out.println("\nSorted Bogie Names (Alphabetical):");
-        System.out.println(Arrays.toString(bogieNames));
+            for (int j = 0; j < capacities.length - i - 1; j++) {
 
-        System.out.println("\nUC17 sorting completed...");
+                if (capacities[j] > capacities[j + 1]) {
+
+                    // Swap
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                }
+            }
+        }
+
+        // Display sorted result
+        System.out.println("\n\nSorted Capacities (Ascending):");
+        for (int c : capacities) {
+            System.out.print(c + " ");
+        }
+
+        System.out.println("\n\nUC16 sorting completed...");
     }
 }
