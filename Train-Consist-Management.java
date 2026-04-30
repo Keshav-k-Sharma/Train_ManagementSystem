@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * MAIN CLASS - UseCase16TrainConsistMgmt
  *
