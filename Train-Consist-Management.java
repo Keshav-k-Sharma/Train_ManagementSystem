@@ -1,48 +1,61 @@
 import java.util.Arrays;
 
 /**
- * MAIN CLASS - UseCase16TrainConsistMgmt
+ * MAIN CLASS - UseCase19TrainConsistMgmt
  *
- * UC16: Sort Passenger Bogies by Capacity (Bubble Sort)
+ * UC19: Binary Search for Bogie ID
  */
-public class UseCase16TrainConsistMgmt {
+public class UseCase19TrainConsistMgmt {
 
     public static void main(String[] args) {
 
         System.out.println("======================================");
-        System.out.println(" UC16 - Manual Sorting using Bubble Sort ");
+        System.out.println(" UC19 - Binary Search for Bogie ID ");
         System.out.println("======================================\n");
 
-        // Create array of passenger bogie capacities
-        int[] capacities = {72, 56, 24, 70, 60};
+        // Create sorted array of bogie IDs
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        // Display original order
-        System.out.println("Original Capacities:");
-        for (int c : capacities) {
-            System.out.print(c + " ");
+        // Ensure array is sorted (important precondition)
+        Arrays.sort(bogieIds);
+
+        // Search key
+        String key = "BG309";
+
+        // Display sorted bogies
+        System.out.println("Sorted Bogie IDs:");
+        for (String id : bogieIds) {
+            System.out.println(id);
         }
 
-        // -------- BUBBLE SORT LOGIC --------
-        for (int i = 0; i < capacities.length - 1; i++) {
+        // ----- BINARY SEARCH LOGIC -----
+        int low = 0;
+        int high = bogieIds.length - 1;
+        boolean found = false;
 
-            for (int j = 0; j < capacities.length - i - 1; j++) {
+        while (low <= high) {
 
-                if (capacities[j] > capacities[j + 1]) {
+            int mid = (low + high) / 2;
 
-                    // Swap
-                    int temp = capacities[j];
-                    capacities[j] = capacities[j + 1];
-                    capacities[j + 1] = temp;
-                }
+            int comparison = key.compareTo(bogieIds[mid]);
+
+            if (comparison == 0) {
+                found = true;
+                break;
+            } else if (comparison < 0) {
+                high = mid - 1; // search left
+            } else {
+                low = mid + 1; // search right
             }
         }
 
-        // Display sorted result
-        System.out.println("\n\nSorted Capacities (Ascending):");
-        for (int c : capacities) {
-            System.out.print(c + " ");
+        // Display result
+        if (found) {
+            System.out.println("\nBogie " + key + " found using Binary Search.");
+        } else {
+            System.out.println("\nBogie " + key + " NOT found.");
         }
 
-        System.out.println("\n\nUC16 sorting completed...");
+        System.out.println("\nUC19 search completed...");
     }
 }
