@@ -1,62 +1,34 @@
+import java.util.Arrays;
+
 /**
- * MAIN CLASS - UseCase15TrainConsistMgmt
+ * MAIN CLASS - UseCase17TrainConsistMgmt
  *
- * UC15: Safe Cargo Assignment using try-catch-finally
+ * UC17: Sort Bogie Names Using Arrays.sort()
  */
-public class UseCase15TrainConsistMgmt {
-
-    // -------- CUSTOM RUNTIME EXCEPTION --------
-    static class CargoSafetyException extends RuntimeException {
-        public CargoSafetyException(String message) {
-            super(message);
-        }
-    }
-
-    // -------- Goods Bogie Model --------
-    static class GoodsBogie {
-        String shape;
-        String cargo;
-
-        GoodsBogie(String shape) {
-            this.shape = shape;
-        }
-
-        // Assign cargo with validation
-        void assignCargo(String cargo) {
-            try {
-                // Rule: Rectangular bogie cannot carry Petroleum
-                if (shape.equals("Rectangular") && cargo.equals("Petroleum")) {
-                    throw new CargoSafetyException("Unsafe cargo assignment!");
-                }
-
-                this.cargo = cargo;
-                System.out.println("Cargo assigned successfully -> " + cargo);
-
-            } catch (CargoSafetyException e) {
-                System.out.println("Error: " + e.getMessage());
-
-            } finally {
-                System.out.println("Cargo validation completed for " + shape + " bogie");
-            }
-        }
-    }
+public class UseCase17TrainConsistMgmt {
 
     public static void main(String[] args) {
 
         System.out.println("======================================");
-        System.out.println("UC15 - Safe Cargo Assignment");
+        System.out.println(" UC17 - Sort Bogie Names Using Arrays.sort() ");
         System.out.println("======================================\n");
 
-        // Safe case
-        GoodsBogie b1 = new GoodsBogie("Cylindrical");
-        b1.assignCargo("Petroleum");
+        // Create array of bogie names
+        String[] bogieNames = {
+            "Sleeper", "AC Chair", "First Class", "General", "Luxury"
+        };
 
-        System.out.println();
+        // Display original array
+        System.out.println("Original Bogie Names:");
+        System.out.println(Arrays.toString(bogieNames));
 
-        // Unsafe case
-        GoodsBogie b2 = new GoodsBogie("Rectangular");
-        b2.assignCargo("Petroleum");
+        // ---- SORT USING BUILT-IN METHOD ----
+        Arrays.sort(bogieNames);
 
-        System.out.println("\nUC15 runtime handling completed...");
+        // Display sorted array
+        System.out.println("\nSorted Bogie Names (Alphabetical):");
+        System.out.println(Arrays.toString(bogieNames));
+
+        System.out.println("\nUC17 sorting completed...");
     }
 }
